@@ -1,0 +1,34 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Environment
+.env
+
+# Project Scratch & Data
+old_main.py
+old_streamlit.py
+test.srt
+test_input.srt
+*corrected.srt
+ai.txt
+faill_db.txt
+test_fuzzy.py
+
+# Docker instructions
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# OS files
+.DS_Store
+Thumbs.db

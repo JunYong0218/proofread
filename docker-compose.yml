@@ -1,0 +1,22 @@
+services:
+  proofread-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: proofread_streamlit
+    ports:
+      - "127.0.0.1:8503:8503"
+    volumes:
+      - .:/app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - APP_TOKEN=${APP_TOKEN:?APP_TOKEN must be set}
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: proofread_cloudflared
+    command: tunnel --no-autoupdate --url http://proofread-app:8503
+    depends_on:
+      - proofread-app
+    restart: unless-stopped
